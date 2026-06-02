@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeHer Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#FFF5F8;
+    min-height:100vh;
+}
+
+/* Header */
+
+.header{
+    padding:25px;
+}
+
+.header h2{
+    color:#2F3748;
+}
+
+.header p{
+    color:#777;
+}
+
+/* SOS Button */
+
+.sos-container{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.sos-btn{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    border:none;
+    background:linear-gradient(135deg,#ff4d6d,#ff1744);
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,0,80,.3);
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+    0%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+    100%{
+        transform:scale(1);
+    }
+}
+
+.sos-text{
+    text-align:center;
+    margin-top:15px;
+    color:#666;
+}
+
+/* Cards */
+
+.section{
+    padding:20px;
+}
+
+.section-title{
+    margin-bottom:15px;
+    color:#2F3748;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.card span{
+    font-weight:600;
+}
+
+/* Quick Actions */
+
+.actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.action-card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    cursor:pointer;
+}
+
+.action-card:hover{
+    transform:translateY(-3px);
+}
+
+.icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+/* Bottom Navigation */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:15px 0;
+    box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.bottom-nav a{
+    text-decoration:none;
+    color:#555;
+    font-size:14px;
+    font-weight:500;
+}
+
+.active{
+    color:#ff2f87 !important;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h2>Welcome 👋</h2>
+    <p>Stay Safe Today</p>
+</div>
+
+<div class="sos-container">
+    <button class="sos-btn" onclick="sosAlert()">
+        🆘
+    </button>
+</div>
+
+<p class="sos-text">
+    Press SOS During Emergency
+</p>
+
+<div class="section">
+
+    <h3 class="section-title">
+        Emergency Services
+    </h3>
+
+    <div class="card">
+        <span>🚔 Police</span>
+        <a href="tel:112">112</a>
+    </div>
+
+    <div class="card">
+        <span>🚑 Ambulance</span>
+        <a href="tel:108">108</a>
+    </div>
+
+    <div class="card">
+        <span>👩 Women Helpline</span>
+        <a href="tel:181">181</a>
+    </div>
+
+    <div class="card">
+        <span>🔥 Fire Service</span>
+        <a href="tel:101">101</a>
+    </div>
+
+</div>
+
+<div class="section">
+
+    <h3 class="section-title">
+        Quick Actions
+    </h3>
+
+    <div class="actions">
+
+        <div class="action-card"
+             onclick="location.href='contacts.html'">
+            <div class="icon">👥</div>
+            Contacts
+        </div>
+
+        <div class="action-card"
+             onclick="shareLocation()">
+            <div class="icon">📍</div>
+            Location
+        </div>
+
+        <div class="action-card"
+             onclick="location.href='tips.html'">
+            <div class="icon">🛡️</div>
+            Safety Tips
+        </div>
+
+        <div class="action-card"
+             onclick="location.href='services.html'">
+            <div class="icon">☎️</div>
+            Services
+        </div>
+
+    </div>
+
+</div>
+
+<div class="bottom-nav">
+    <a href="home.html" class="active">🏠 Home</a>
+    <a href="contacts.html">👥 Contacts</a>
+    <a href="tips.html">🛡️ Tips</a>
+    <a href="services.html">☎ Services</a>
+</div>
+
+<script>
+
+function sosAlert(){
+    alert("🚨 Emergency Alert Activated!");
+}
+
+function shareLocation(){
+
+    if(navigator.geolocation){
+
+        navigator.geolocation.getCurrentPosition(function(position){
+
+            alert(
+                "Latitude: "
+                + position.coords.latitude +
+                "\nLongitude: "
+                + position.coords.longitude
+            );
+
+        });
+
+    }else{
+
+        alert("Location not supported");
+
+    }
+}
+
+</script>
+
+</body>
+</html>
